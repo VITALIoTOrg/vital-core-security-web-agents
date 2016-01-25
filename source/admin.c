@@ -1156,10 +1156,6 @@ static void install_interactive(int argc, char **argv) {
                         fprintf(stdout, "\nError: this server instance is already configured with %s module.\nPlease try again.\n\n", DESCRIPTION);
                         install_log("server instance %s is already configured with %s",
                                 input, DESCRIPTION);
-                    } else if (strstr(conf, "LoadModule") == NULL) {
-                        fprintf(stdout, "\nError: invalid server configuration file %s.]\nPlease try again.\n\n",
-                                input);
-                        install_log("could not locate LoadModule configuration directive in %s", input);
                     } else {
                         strncpy(server_conf, input, sizeof(server_conf) - 1);
                         install_log("server configuration file %s", server_conf);

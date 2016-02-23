@@ -134,6 +134,16 @@ ifeq ($(OS_ARCH), WINNT)
  include Makefile.windows.mk
 endif
 
+ifdef APACHE2INC
+ $(APACHE_OUT_OBJS): CFLAGS += $(COMPILEFLAG)I$(APACHE2INC)
+ $(APACHE22_OUT_OBJS): CFLAGS += $(COMPILEFLAG)I$(APACHE2INC)
+endif
+
+ifdef APRINC
+ $(APACHE_OUT_OBJS): CFLAGS += $(COMPILEFLAG)I$(APRINC)
+ $(APACHE22_OUT_OBJS): CFLAGS += $(COMPILEFLAG)I$(APRINC)
+endif
+
 VERSION_NUM := $(shell $(ECHO) $(VERSION) | $(SED) -$(SED_ROPT) "s/^([.0-9]*)-.*/\1/g" | $(SED) -$(SED_ROPT) "s/\./\,/g")
 
 $(OBJDIR)/%.$(OBJ): %.c

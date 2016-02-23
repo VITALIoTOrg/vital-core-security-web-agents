@@ -20,6 +20,9 @@ LINUX_MK_INCLUDED := true
 CC := cc
 SHARED := -shared
 
+APACHE2INC = /usr/include/apache2 # Comment or substitute with your system path
+APRINC = /usr/include/apr-1.0 # Comment or substitute with your system path
+
 CFLAGS  += -fPIC -pthread -D_REENTRANT -DLINUX -D_GNU_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector \
 	    -Wno-unused-value -Wno-deprecated-declarations
 	

@@ -33,7 +33,6 @@ ifneq ("$(PROGRAMFILES)$(ProgramFiles)","")
  CP := cmd /c copy /Y
  CD := cd
  EXEC := 
- REVISION := $(shell svn info . | findstr "Revision:")
  BUILD_MACHINE := $(shell hostname)
  IDENT_DATE := $(shell powershell get-date -format "{dd.MM.yyyy}")
  PATHSEP=\\
@@ -52,7 +51,6 @@ else
  CP := cp
  CD := cd
  EXEC := ./
- REVISION := $(shell svn info . | grep Revision:)
  BUILD_MACHINE := $(shell hostname)
  IDENT_DATE := $(shell date +'%d.%m.%y')
  PATHSEP=/
@@ -168,8 +166,7 @@ build:
 version:
 	@$(ECHO) "[***** Updating version.h *****]"
 	-$(RMALL) source$(PS)version.h
-	$(SED) -e "s$(SUB)_REVISION_$(SUB)$(REVISION)$(SUB)g" \
-	    -e "s$(SUB)_IDENT_DATE_$(SUB)$(IDENT_DATE)$(SUB)g" \
+	$(SED) -e "s$(SUB)_IDENT_DATE_$(SUB)$(IDENT_DATE)$(SUB)g" \
 	    -e "s$(SUB)_BUILD_MACHINE_$(SUB)$(BUILD_MACHINE)$(SUB)g" \
 	    -e "s$(SUB)_VERSION_NUM_$(SUB)$(VERSION_NUM)$(SUB)g" \
 	    -e "s$(SUB)_VERSION_$(SUB)$(VERSION)$(SUB)g" < source$(PS)version.template > source$(PS)version.h

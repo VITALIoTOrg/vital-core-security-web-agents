@@ -17,7 +17,7 @@
 ifndef	LINUX_MK_INCLUDED
 LINUX_MK_INCLUDED := true
 	
-CC := gcc44
+CC := cc
 SHARED := -shared
 
 CFLAGS  += -fPIC -pthread -D_REENTRANT -DLINUX -D_GNU_SOURCE -D_FORTIFY_SOURCE=2 -fstack-protector \
